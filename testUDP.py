@@ -31,8 +31,6 @@ def testSendFloat(float1, float2):
 
 #print(sendOut)
 while True:
-	# UDP sends an inter, not float.
-	# MOAB will receive this value and / by 100.0 to make a float point
 
 	testSendFloat(102.5,130.5)
 	time.sleep(0.1)
