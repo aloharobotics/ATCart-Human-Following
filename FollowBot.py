@@ -23,7 +23,7 @@ def print_position(distance, throttle, pos):
 	spaces = ' ' * pos
 	print("%.01f %d" % (distance, throttle),spaces + s1 + '  ' + s3)
 
-MAX_SKID_SPEED = 15.0       # RPM
+MAX_SKID_SPEED = 10.0       # RPM
 
 MIN_CHASE_DISTANCE = 2.0  #2.0
 MAX_CHASE_DISTANCE = 7.0   #5.0
@@ -103,7 +103,7 @@ class FollowBot:
 			#print("x_avg",self.x_avg)
 			#print("pos",pos)
 
-			#print("_closestDistance", self._closestDistance)
+			print("_closestDistance", self._closestDistance)
 			if self._closestDistance > MAX_CHASE_DISTANCE:
 				print("Over than MAX_CHASE_DISTANCE")
 				rpmR = 0.0  # stop chasing
@@ -122,7 +122,7 @@ class FollowBot:
 				# Adjust the speed according to the distance
 				#print("CHASING...")
 				humanDepth = self._closestDistance
-				frameDist = 2.0*(humanDepth)/(m.tan(55.0*deg2rad))		# this is a formula to calculate horizontal distance of the human plan
+				frameDist = 2.0*(humanDepth)*(m.tan(55.0*deg2rad))		# this is a formula to calculate horizontal distance of the human plan
 				x_dist = self.map(pos, -1.0, 1.0, -frameDist/2.0, frameDist/2.0) # map a pos value to real distance same unit as humanDepth
 				chord_dist = m.sqrt(x_dist**2 + humanDepth**2)		# a hypotenuse length of right triangle, and also a chord distance of ICC circle
 				humanAng = m.atan(x_dist/humanDepth)				# an angle from center of camera to detected human on the frame

@@ -243,15 +243,15 @@ while True:
     ###################################################################################
     ################ Select bot_mode according to chosen SBUS channel #################
     ################################################################################### 
-
+    
     ## None Mode ##
     if bot_mode == Bot_State.NONE:
         #print("NONE Mode")
         rpmR = 0 
         rpmL = 0     
-        udpPacket = struct.pack('HH', rpmR, rpmL)
+        udpPacket = struct.pack('ff', rpmR, rpmL)
         sbus_sock.sendto(udpPacket, (MOAB_COMPUTER, MOAB_PORT))
-
+    
     ## Follow Mode ##
     elif bot_mode == Bot_State.FOLLOW:
         #print("FOLLOW MODE")
@@ -269,14 +269,14 @@ while True:
         
         udpPacket = struct.pack('ff', rpmR, rpmL)
         sbus_sock.sendto(udpPacket, (MOAB_COMPUTER, MOAB_PORT))
-
+    
     elif bot_mode == Bot_State.MANUAL:
         print("MANUAL MODE")
 
     else:
         print(" ------- a BUG...  missing step in Bot_State enum!!")
     sys.stdout.flush()
-
+    
     # max period for reading for loop is around 0.03s
     # max period in this while loop is around 0.033s
 

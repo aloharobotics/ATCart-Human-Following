@@ -17,7 +17,7 @@ You can check out this [video](https://www.youtube.com/watch?v=wR2KNPnT8nE&t=6s)
 
 # Human Following Algorithm
 The idea behind this is quite simple if we know how far the robot to the target human, which we can use the IntelRealsense for this purpose. The camera has a Field of View angle around 110degress approximately. We know the depth of camera to human then we can calculate the frame distance. The collision-detector code will provide you the human value in pixel, then we can map that value with the frame distance to get how far a human from the center frame in meter.
-![](images/follow1.JPG)
+![](images/follow1_fix.png)
 
 After both human depth and x distance are known, we can calculate the chord distance from right angle trinometry formular. Then the ICC Radius can be calculated from those chord distance and angle.
 ![](images/follow2.JPG)
